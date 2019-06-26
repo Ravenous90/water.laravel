@@ -12,7 +12,7 @@ return [
     | any other location as required by the application or its packages.
     */
 
-    'name' => 'Laravel',
+    'name' => 'Water',
 
     /*
     |--------------------------------------------------------------------------
@@ -162,7 +162,8 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
-
+        SleepingOwl\Admin\Providers\SleepingOwlServiceProvider::class,
+        GrahamCampbell\Exceptions\ExceptionsServiceProvider::class,
         /*
          * Package Service Providers...
          */

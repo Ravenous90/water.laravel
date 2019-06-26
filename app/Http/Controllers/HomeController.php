@@ -3,9 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
+    public static $table;
+
     /**
      * Create a new controller instance.
      *
@@ -21,8 +24,16 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
     public function index()
     {
-        return view('home');
+        $items = DB::table(static::$table)->get();
+        return view(static::$table . '.index',['items' => $items]);
+    }
+
+    public function view($id)
+    {
+        $item = DB::table(static::$table)->find($id);
+        return view(static::$table . '.view',['item' => $item]);
     }
 }
