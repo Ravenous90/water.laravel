@@ -13,7 +13,7 @@
     <!-- Styles -->
     <link href="{{ asset('public/css/app.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('public/css/custom_styles.css') }}" />
-
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- Scripts -->
     <script>
         window.Laravel = <?php echo json_encode([
@@ -35,9 +35,7 @@
                 </button>
 
                 <!-- Branding Image -->
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
-                </a>
+                @include('boxes/brand-name')
             </div>
 
             <div class="collapse navbar-collapse" id="app-navbar-collapse">
@@ -80,12 +78,11 @@
     <div id="app" class="custom-body">
         @yield('content')
     </div>
-
-    <footer class="custom-footer">Powered by ...</footer>
-
+    <div class="footer">
+        <footer class="custom-footer">Powered by ...</footer>
+    </div>
     <!-- Scripts -->
     <script src="{{ asset('/public/js/app.js') }}"></script>
     <script src="{{ asset('/public/js/custom_scripts.js') }}"></script>
 </body>
-
 </html>

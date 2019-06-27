@@ -20,17 +20,19 @@ class RouteController extends Controller
         'users',
     ];
 
-    public static function buildingsRoutes()
+    private static $boss = 'boss';
+
+    public static function MainRoutes()
     {
         $result = [];
         foreach (self::$tables as $table) {
             $result[] = Route::get('/' . $table, ucfirst($table) . 'Controller@index');
             $result[] = Route::get('/' . $table . '/{id}', ucfirst($table) . 'Controller@view');
         }
+        if (!is_null(self::$boss)) {
+            $result[] = Route::get('/' . self::$boss, ucfirst(self::$boss) . 'Controller@index');
+        }
         return $result;
-
-//            Route::get('/buildings/{id}', 'BuildingsController@view')
-
     }
 
 }

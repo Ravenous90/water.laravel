@@ -11,10 +11,14 @@ html, body {
     height: 100%;
     color: var(--main-font-color);
 }
+a, a:visited, a:active, a:hover, a:link {
+    color: inherit;
+    text-decoration: none;
+}
 .custom-body {
     min-height: 100%;
     height: auto;
-    margin: 0 auto -60px;
+    margin: 0;
     padding: 15px;
     background-image: linear-gradient(160deg, var(--main-bg-color) -10%, var(--main-bg-gradient-color) 100%);
 }
@@ -47,4 +51,275 @@ html, body {
     text-align: center;
     font-size: 30px;
     padding-top: 50px;
+}
+.custom-table > tbody > tr:hover {
+    background-color: #0b0b0b;
+}
+.custom-table caption {
+    font-size: 24px;
+    color: var(--main-font-color);
+}
+.back-btn {
+    font-size: 24px;
+}
+.custom-title {
+    margin-top: 20px;
+    font-size: 30px;
+    text-align: center;
+    font-weight: 600;
+}
+.navbar-default .navbar-brand:focus, .navbar-default .navbar-brand:hover {
+    color: var(--main-font-color);
+}
+/* start back button styles */
+.back-btn-wrapper {
+    margin-left: -25px;
+}
+.back-btn-wrapper svg {
+    width: 70px;
+    height: auto;
+    margin: 0 2rem;
+    cursor: pointer;
+    overflow: visible;
+    fill: var(--main-font-color);
+}
+.back-btn-wrapper svg polygon, .back-btn-wrapper svg path {
+    transition: all 0.5s cubic-bezier(0.2, 1, 0.3, 1);
+}
+.back-btn-wrapper svg:hover polygon, .back-btn-wrapper svg:hover path {
+    transition: all 1s cubic-bezier(0.2, 1, 0.3, 1);
+    fill: var(--main-bg-gradient-color);
+}
+.back-btn-wrapper svg:hover .arrow {
+    animation: arrow-anim 2.5s cubic-bezier(0.2, 1, 0.3, 1) infinite;
+}
+.back-btn-wrapper svg:hover .arrow-fixed {
+    animation: arrow-fixed-anim 2.5s cubic-bezier(0.2, 1, 0.3, 1) infinite;
+}
+@keyframes arrow-anim {
+    0% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+    5% {
+        transform: translateX(-0.1rem);
+    }
+    100% {
+        transform: translateX(1rem);
+        opacity: 0;
+    }
+}
+@keyframes arrow-fixed-anim {
+    5% {
+        opacity: 0;
+    }
+    20% {
+        opacity: 0.4;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+/* end back button styles */
+
+/* start brand title styles */
+.brand-name-title {
+    background: #2d2d2d;
+}
+.brand-name-title a {
+    color: white;
+    padding: 0.7em calc(0.7em * 1.2);
+    display: inline-block;
+    border: 3px solid transparent;
+    position: relative;
+    cursor: pointer;
+    letter-spacing: 0.07em;
+    font-weight: 600;
+    line-height: 0.9;
+}
+.brand-name-title a .text {
+    transform: translate3d(0, 0.7em, 0);
+    display: block;
+    transition: transform 0.4s cubic-bezier(0.2, 0, 0, 1) 0.4s;
+}
+.brand-name-title a:after {
+    position: absolute;
+    content: '';
+    bottom: -3px;
+    left: calc(0.7em * 1.2);
+    right: calc(0.7em * 1.2);
+    height: 3px;
+    background: var(--main-bg-gradient-color);
+    transition: transform 0.8s cubic-bezier(1, 0, 0.37, 1) 0.2s, right 0.2s cubic-bezier(0.04, 0.48, 0, 1) 0.6s, left 0.4s cubic-bezier(0.04, 0.48, 0, 1) 0.6s;
+    transform-origin: left;
+}
+.brand-name-title .line {
+    position: absolute;
+    background: var(--main-bg-gradient-color);
+}
+.brand-name-title .line.-right, .brand-name-title .line.-left {
+    width: 3px;
+    bottom: -3px;
+    top: -3px;
+    transform: scale3d(1, 0, 1);
+}
+.brand-name-title .line.-top, .brand-name-title .line.-bottom {
+    height: 3px;
+    left: -3px;
+    right: -3px;
+    transform: scale3d(0, 1, 1);
+}
+.brand-name-title .line.-right {
+    right: -3px;
+    transition: transform 0.1s cubic-bezier(1, 0, 0.65, 1.01) 0.23s;
+    transform-origin: top;
+}
+.brand-name-title .line.-top {
+    top: -3px;
+    transition: transform 0.08s linear 0.43s;
+    transform-origin: left;
+}
+.brand-name-title .line.-left {
+    left: -3px;
+    transition: transform 0.08s linear 0.51s;
+    transform-origin: bottom;
+}
+.brand-name-title .line.-bottom {
+    bottom: -3px;
+    transition: transform 0.3s cubic-bezier(1, 0, 0.65, 1.01);
+    transform-origin: right;
+}
+.brand-name-title a:hover .text, .brand-name-title a:active .text {
+    transform: translate3d(0, 0, 0);
+    transition: transform 0.6s cubic-bezier(0.2, 0, 0, 1) 0.4s;
+}
+.brand-name-title a:hover:after, .brand-name-title a:active:after {
+    transform: scale3d(0, 1, 1);
+    right: -3px;
+    left: -3px;
+    transform-origin: right;
+    transition: transform 0.2s cubic-bezier(1, 0, 0.65, 1.01) 0.17s, right 0.2s cubic-bezier(1, 0, 0.65, 1.01), left 0s 0.3s;
+}
+.brand-name-title a:hover .line, .brand-name-title a:active .line {
+    transform: scale3d(1, 1, 1);
+}
+.brand-name-title a:hover .line.-right, .brand-name-title a:active .line.-right {
+    transition: transform 0.1s cubic-bezier(1, 0, 0.65, 1.01) 0.2s;
+    transform-origin: bottom;
+}
+.brand-name-title a:hover .line.-top, .brand-name-title a:active .line.-top {
+    transition: transform 0.08s linear 0.4s;
+    transform-origin: right;
+}
+.brand-name-title a:hover .line.-left, .brand-name-title a:active .line.-left {
+    transition: transform 0.08s linear 0.48s;
+    transform-origin: top;
+}
+.brand-name-title a:hover .line.-bottom, .brand-name-title a:active .line.-bottom {
+    transition: transform 0.5s cubic-bezier(0, 0.53, 0.29, 1) 0.56s;
+    transform-origin: left;
+}
+
+/* end brand title styles */
+
+/* start title name styles*/
+.button-container-1 {
+    position: relative;
+    height: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    overflow: hidden;
+    font-family: 'Lato', sans-serif;
+    transition: 0.5s;
+    letter-spacing: 1px;
+    margin-top: 20px;
+    font-size: 30px;
+    text-align: center;
+    font-weight: 600;
+    border-radius: 50px;
+    display: inline-block;
+    opacity: 50%;
+}
+.button-container-1 button {
+    width: 101%;
+    height: 100%;
+    font-family: 'Lato', sans-serif;
+    font-weight: 300;
+    font-size: 20px;
+    letter-spacing: 1px;
+    background: var(--main-bg-color);
+    -webkit-mask: url("https://raw.githubusercontent.com/robin-dela/css-mask-animation/master/img/nature-sprite.png");
+    mask: url("https://raw.githubusercontent.com/robin-dela/css-mask-animation/master/img/nature-sprite.png");
+    -webkit-mask-size: 2300% 100%;
+    mask-size: 2300% 100%;
+    border: none;
+    color: var(--main-font-color);
+    cursor: pointer;
+    -webkit-animation: ani2 0.7s steps(22) forwards;
+    animation: ani2 0.7s steps(22) forwards;
+}
+.button-container-1 button:hover {
+    -webkit-animation: ani 0.7s steps(22) forwards;
+    animation: ani 0.7s steps(22) forwards;
+}
+.mas {
+    position: absolute;
+    color: var(--main-bg-color);
+    text-align: center;
+    width: 101%;
+    font-weight: 300;
+    font-size: 20px;
+    margin-top: 12px;
+    overflow: hidden;
+}
+@-webkit-keyframes ani {
+    from {
+        -webkit-mask-position: 0 0;
+        mask-position: 0 0;
+    }
+    to {
+        -webkit-mask-position: 100% 0;
+        mask-position: 100% 0;
+    }
+}
+@keyframes ani {
+    from {
+        -webkit-mask-position: 0 0;
+        mask-position: 0 0;
+    }
+    to {
+        -webkit-mask-position: 100% 0;
+        mask-position: 100% 0;
+    }
+}
+@-webkit-keyframes ani2 {
+    from {
+        -webkit-mask-position: 100% 0;
+        mask-position: 100% 0;
+    }
+    to {
+        -webkit-mask-position: 0 0;
+        mask-position: 0 0;
+    }
+}
+@keyframes ani2 {
+    from {
+        -webkit-mask-position: 100% 0;
+        mask-position: 100% 0;
+    }
+    to {
+        -webkit-mask-position: 0 0;
+        mask-position: 0 0;
+    }
+}
+
+/* end title name styles*/
+
+
+.username-container {
+    font-size: 24px;
+}
+.username-container span:nth-child(2){
+    font-weight: 600;
 }

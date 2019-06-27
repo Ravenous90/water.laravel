@@ -23,6 +23,6 @@ Auth::routes();
 
 //Route::get('/home', 'HomeController@index');
 
-RouteController::buildingsRoutes();
+RouteController::mainRoutes();
 
 //Route::get('/buildings/{building}', 'BuildingsController@index');

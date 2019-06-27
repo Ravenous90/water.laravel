@@ -8,32 +8,39 @@ use Illuminate\Support\Facades\DB;
 class HomeController extends Controller
 {
     public static $table;
+    public static $childTable;
 
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
     public function __construct()
     {
         $this->middleware('auth');
     }
 
-    /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Http\Response
-     */
-
     public function index()
     {
         $items = DB::table(static::$table)->get();
-        return view(static::$table . '.index',['items' => $items]);
+        return view(static::$table . '.index',[
+            'items' => $items,
+            'title' => static::$table,
+        ]);
     }
 
     public function view($id)
     {
         $item = DB::table(static::$table)->find($id);
-        return view(static::$table . '.view',['item' => $item]);
+        $children = null;
+        $user = null;
+        if (!is_null(static::$childTable)) {
+            $children = DB::table(static::$childTable)->get()->where(substr(static::$table, 0, -1) . '_id', $id);
+        }
+        if (static::$childTable == 'users') {
+            $user = DB::table(static::$childTable)->find($item->user_id);
+        }
+           return view(static::$table . '.view', [
+            'item' => $item,
+            'title' => static::$table,
+            'children' => $children,
+            'childTitle' => static::$childTable ?: null,
+            'user' => $user,
+        ]);
     }
 }

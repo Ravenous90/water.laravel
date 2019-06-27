@@ -11,5 +11,8 @@
         <div class="one-block">
             <a href="{{ url('/sensors') }}">Sensors</a>
         </div>
+        <div class="one-block">
+            <a href="{{ url('/boss') }}">Boss</a>
+        </div>
     </div>
 @endsection
